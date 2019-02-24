@@ -1,4 +1,8 @@
 $(document).ready(function ($) {
+    $('#test-send-keys').on('keyup', function (e) {
+        $(this).removeClass();
+        $(this).addClass($(this).val())
+    });
     $('#test-submit').on('submit', function (e) {
         e.preventDefault();
         $(this).addClass('submitted');
@@ -13,7 +17,6 @@ $(document).ready(function ($) {
     $('#test-wait').on('click', function (e) {
         e.preventDefault();
         window.setTimeout(function () {
-            $('body').append('<button id="test-wait-click">Test Wait Click</button>');
             $('body').append('<div id="test-wait-get">Test Wait Get</div>');
         }, 3000);
     });
