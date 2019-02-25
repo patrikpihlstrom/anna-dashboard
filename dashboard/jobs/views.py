@@ -13,7 +13,7 @@ def index(request):
 	                        params={'status': ['running', 'starting', 'pending']}, headers=headers)
 	jobs = json.loads(response.content)
 	jobs = [{'tag': job['tag'], 'status': job['status'],
-	         'log': ('...' + job['log'][-32:]) if len(job['log']) > 32 else job['log'], 'updated_at': job['updated_at']}
+	         'log': job['log'][-int(job['log'].find(' ')):], 'updated_at': job['updated_at']}
 	        for job in jobs]
 	return HttpResponse(template.render({'jobs': jobs}, request))
 
