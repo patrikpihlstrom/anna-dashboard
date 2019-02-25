@@ -32,6 +32,7 @@ ALLOWED_HOSTS = ['annahub.se']
 
 INSTALLED_APPS = [
     'jobs.apps.JobsConfig',
+    'django_bootstrap_base_template',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -55,7 +56,7 @@ ROOT_URLCONF = 'dashboard.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['unittests/templates'],
+        'DIRS': ['templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

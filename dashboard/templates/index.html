@@ -1,0 +1,22 @@
+{% extends 'bootstrap_base.html' %}
+
+{% block body %}
+<div class="container">
+	<h1>anna</h1>
+	<p>
+		<a href="https://github.com/patrikpihlstrom/anna">anna</a><br>
+		<a href="https://github.com/patrikpihlstrom/anna-api">anna-api</a><br>
+		<a href="https://github.com/patrikpihlstrom/anna-cli">anna-cli</a>
+	</p>
+</div>
+<div class="container">
+	{% for job in jobs %}
+		<div class="row">
+			<div class="col-sm-3">{{ job.tag }}</div>
+			<div class="col-sm-3">{{ job.status }}</div>
+			<div class="col-sm-3">{{ job.log }}</div>
+			<div class="col-sm-3">{{ job.updated_at }}</div>
+		</div>
+	{% endfor %}
+</div>
+{% endblock %}
