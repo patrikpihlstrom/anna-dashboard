@@ -1,14 +1,16 @@
 {% extends 'bootstrap_base.html' %}
+{% block extra_css %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'jobs/style.css' %}">
+{% endblock %}
 {% block nav %}
 {% endblock %}
 {% block body_content %}
 <div class="container">
 	<h1>anna</h1>
-	<p>
-		<a href="https://github.com/patrikpihlstrom/anna">anna</a><br>
-		<a href="https://github.com/patrikpihlstrom/anna-api">anna-api</a><br>
-		<a href="https://github.com/patrikpihlstrom/anna-cli">anna-cli</a>
-	</p>
+	<a href="https://github.com/patrikpihlstrom/anna">anna</a><br>
+	<a href="https://github.com/patrikpihlstrom/anna-api">anna-api</a><br>
+	<a href="https://github.com/patrikpihlstrom/anna-cli">anna-cli</a><br><br>
 </div>
 <div class="container">
 	{% for job in jobs %}
