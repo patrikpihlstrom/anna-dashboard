@@ -1,27 +1,47 @@
 {% extends 'bootstrap_base.html' %}
 {% block extra_css %}
 {% load static %}
+{% load octicons %}
 <link rel="stylesheet" href="{% static 'css/style.css' %}">
 {% endblock %}
 {% block nav %}
 {% endblock %}
 {% block body_content %}
-<div class="container-fluid">
-	<div class="row">
-		<div class="col-sm-2">
-			<div class="container">
-				<h1>anna</h1>
-				<a href="https://github.com/patrikpihlstrom/anna">anna</a><br>
-				<a href="https://github.com/patrikpihlstrom/anna-api">anna-api</a><br><br>
+<div class="container container-invisible">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-sm-2">
+				<div class="container rounded">
+					<h1>anna</h1>
+					<a href="https://github.com/patrikpihlstrom/anna">anna</a><br>
+					<a href="https://github.com/patrikpihlstrom/anna-api">anna-api</a><br>
+					<a href="https://github.com/patrikpihlstrom/anna-dashboard">anna-dashboard</a><br><br>
+				</div>
+			</div>
+			<div class="col-sm">
+				<div class="row">
+					<div class="container rounded container-search">
+						<input class="form-control" type="text" placeholder="status:starting,running driver:firefox site:test..."
+							   aria-label="search" id="search" />
+					</div>
+				</div>
 			</div>
 		</div>
-		<div class="col-sm">
-			<div class="container">
-				<br>
-				<input class="form-control" type="text" placeholder="status:starting,running driver:firefox site:test..."
-					   aria-label="search" id="search">
-				<br>
-			</div>
+	</div>
+	<div class="container rounded">
+		<div class="row row-job row-head">
+			<div class="col-sm-3 gray">{% octicon "tag" height="24" %}</div>
+			<div class="col-sm-3 gray">{% octicon "heart" height="24" %}</div>
+			<div class="col-sm-3 gray">{% octicon "note" height="24" %}</div>
+			<div class="col-sm-3 gray">{% octicon "history" height="24" %}</div>
+		</div>
+	</div>
+	<div class="container rounded">
+		<div class="row row-job row-head">
+			<div class="col-sm-3 gray">chrome-test-12345</div>
+			<div class="col-sm-3 gray">done</div>
+			<div class="col-sm-3 gray">10/10</div>
+			<div class="col-sm-3 gray">03:14:15</div>
 		</div>
 	</div>
 </div>

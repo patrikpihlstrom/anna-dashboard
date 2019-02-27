@@ -3,6 +3,13 @@ body {
 	background-repeat: repeat;
 }
 
+.octicon {
+	display: inline-block;
+	vertical-align: text-top;
+	fill: currentColor;
+}
+
+
 .container {
 	background-color: #fff;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.35), 0 6px 20px 0 rgba(0, 0, 0, 0.32);
@@ -10,6 +17,29 @@ body {
 	margin-bottom: 16px;
 }
 
+.container-invisible {
+	background: none;
+	box-shadow: none;
+}
+
 .row {
 	padding-bottom: 5px;
+}
+
+.rounded {
+    border-radius:.15rem!important
+}
+
+.gray {
+	color: #777;
+}
+
+.row-head {
+	text-align: center;
+	padding-top: 3px;
+}
+
+.container-search {
+	padding-top: 16px;
+	padding-bottom: 16px;
 }

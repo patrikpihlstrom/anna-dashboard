@@ -33,6 +33,7 @@ ALLOWED_HOSTS = ['annahub.se']
 INSTALLED_APPS = [
     'jobs.apps.JobsConfig',
     'django_bootstrap_base_template',
+    'octicons',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
