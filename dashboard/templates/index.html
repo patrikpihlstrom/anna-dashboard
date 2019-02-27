@@ -2,6 +2,8 @@
 {% block extra_css %}
 {% load static %}
 {% load octicons %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="{% static 'js/search.js' %}"></script>
 <link rel="stylesheet" href="{% static 'css/style.css' %}">
 {% endblock %}
 {% block nav %}
@@ -20,29 +22,37 @@
 			</div>
 			<div class="col-sm">
 				<div class="row">
+					<div class="container rounded">
+						<p><br><br></p>
+					</div>
+				</div>
+				<div class="row">
 					<div class="container rounded container-search">
-						<input class="form-control" type="text" placeholder="status:starting,running driver:firefox site:test..."
-							   aria-label="search" id="search" />
+						<input class="form-control" type="text"
+							   placeholder="status:starting,running driver:firefox site:test..."
+							   aria-label="search" id="search"/>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-	<div class="container rounded">
-		<div class="row row-job row-head">
-			<div class="col-sm-3 gray">{% octicon "tag" height="24" %}</div>
-			<div class="col-sm-3 gray">{% octicon "heart" height="24" %}</div>
-			<div class="col-sm-3 gray">{% octicon "note" height="24" %}</div>
-			<div class="col-sm-3 gray">{% octicon "history" height="24" %}</div>
+		<div class="container rounded">
+			<div class="row row-job row-head">
+				<div class="col-sm-3 gray">{% octicon "tag" height="24" %}</div>
+				<div class="col-sm-3 gray">{% octicon "heart" height="24" %}</div>
+				<div class="col-sm-3 gray">{% octicon "note" height="24" %}</div>
+				<div class="col-sm-3 gray">{% octicon "history" height="24" %}</div>
+			</div>
 		</div>
-	</div>
-	<div class="container rounded">
-		<div class="row row-job row-head">
-			<div class="col-sm-3 gray">chrome-test-12345</div>
-			<div class="col-sm-3 gray">done</div>
-			<div class="col-sm-3 gray">10/10</div>
-			<div class="col-sm-3 gray">03:14:15</div>
+		{% for job in jobs %}
+		<div class="container rounded">
+			<div class="row row-job row-head">
+				<div class="col-sm-3 gray">{{ job.tag }}</div>
+				<div class="col-sm-3 gray">{{ job.status }}</div>
+				<div class="col-sm-3 gray">{{ job.log }}</div>
+				<div class="col-sm-3 gray">{{ job.updated_at }}</div>
+			</div>
 		</div>
+		{% endfor %}
 	</div>
 </div>
 {% endblock %}

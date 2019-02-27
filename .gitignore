@@ -3,3 +3,4 @@
 venv
 .idea
 dashboard/static/media/*
+.vscode

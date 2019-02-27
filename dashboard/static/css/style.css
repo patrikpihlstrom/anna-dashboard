@@ -22,10 +22,6 @@ body {
 	box-shadow: none;
 }
 
-.row {
-	padding-bottom: 5px;
-}
-
 .rounded {
     border-radius:.15rem!important
 }
