@@ -1,0 +1,15 @@
+body {
+	background-image: url("/static/media/pattern.jpg");
+	background-repeat: repeat;
+}
+
+.container {
+	background-color: #fff;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.35), 0 6px 20px 0 rgba(0, 0, 0, 0.32);
+	margin-top: 16px;
+	margin-bottom: 16px;
+}
+
+.row {
+	padding-bottom: 5px;
+}

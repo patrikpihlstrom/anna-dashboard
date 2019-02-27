@@ -1,25 +1,28 @@
 {% extends 'bootstrap_base.html' %}
 {% block extra_css %}
 {% load static %}
-<link rel="stylesheet" href="{% static 'jobs/style.css' %}">
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
 {% endblock %}
 {% block nav %}
 {% endblock %}
 {% block body_content %}
-<div class="container">
-	<h1>anna</h1>
-	<a href="https://github.com/patrikpihlstrom/anna">anna</a><br>
-	<a href="https://github.com/patrikpihlstrom/anna-api">anna-api</a><br>
-	<a href="https://github.com/patrikpihlstrom/anna-cli">anna-cli</a><br><br>
-</div>
-<div class="container">
-	{% for job in jobs %}
-		<div class="row">
-			<div class="col-sm-3">{{ job.tag }}</div>
-			<div class="col-sm-3">{{ job.status }}</div>
-			<div class="col-sm-3">{{ job.log }}</div>
-			<div class="col-sm-3">{{ job.updated_at }}</div>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-sm-2">
+			<div class="container">
+				<h1>anna</h1>
+				<a href="https://github.com/patrikpihlstrom/anna">anna</a><br>
+				<a href="https://github.com/patrikpihlstrom/anna-api">anna-api</a><br><br>
+			</div>
 		</div>
-	{% endfor %}
+		<div class="col-sm">
+			<div class="container">
+				<br>
+				<input class="form-control" type="text" placeholder="status:starting,running driver:firefox site:test..."
+					   aria-label="search" id="search">
+				<br>
+			</div>
+		</div>
+	</div>
 </div>
 {% endblock %}
