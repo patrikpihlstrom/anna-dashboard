@@ -1,15 +1,17 @@
 $(document).ready(function () {
 	const separators = '., ';
-	const keys = ['id:', 'driver:', 'site:', 'status:', 'tag:', 'container:', 'log:', 'token:', 'updated_at:']
-	const words = ['pending', 'starting', 'running', 'error', 'done', 'chrome', 'firefox'].concat(keys);
+	const words = ['pending', 'starting', 'running', 'error', 'done', 'chrome', 'firefox'];
 
 	var timer = 1;
 
 	$('#search').keydown(function (e) {
 		if (e.keyCode == 9) { // tab was pressed
 			e.preventDefault();
-			$(this).get(0).setSelectionRange($(this).val().length, $(this).val().length);
-		} else if (e.keyCode === 13) { // return was pressed
+			if ($(this).val().slice(-1) !== ' ') {
+				$(this).val($(this).val() + ' ');
+			}
+			var element = $(this).get(0);
+			element.setSelectionRange(element.selectionEnd + 1, element.selectionEnd + 1);
 		}
 	});
 
@@ -73,17 +75,10 @@ $(document).ready(function () {
 		if (timer > 0) {
 			timer--;
 			if (timer <= 0) {
-				var query = {};
-				var tokens = $('#search').val().split(' ');
-				tokens.forEach(function (t) {
-					t = t.split(':');
-					if (t.length > 1) {
-						query[t[0]] = t[1].split(',');
-					}
-				});
+				var query = $('#search').val().trim().split(' ');
 				$.ajax({
 					url: '/search',
-					data: query
+					data: {query: query}
 				}).done(function (response) {
 					$('#jobs').empty();
 					response.forEach(function (job) {
@@ -99,7 +94,7 @@ $(document).ready(function () {
 						$('#jobs').append(html);
 					});
 				});
-				timer = 1;
+				//timer = 3;
 			}
 		}
 	}, 1000);
