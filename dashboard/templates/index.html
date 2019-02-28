@@ -10,61 +10,49 @@
 {% endblock %}
 {% block body_content %}
 <div class="container container-invisible">
-	<div class="container-fluid">
-		<div class="row">
-			<div class="col-sm-2">
-				<div class="container rounded">
-					<h1>anna</h1>
-					<a href="https://github.com/patrikpihlstrom/anna">anna</a><br>
-					<a href="https://github.com/patrikpihlstrom/anna-api">anna-api</a><br>
-					<a href="https://github.com/patrikpihlstrom/anna-dashboard">anna-dashboard</a><br><br>
-				</div>
+	<div class="row">
+		<div class="col-sm-2">
+			<div class="container rounded">
+				<h1>anna</h1>
+				<a href="https://github.com/patrikpihlstrom/anna">anna</a>
+				<br>
+				<a href="https://github.com/patrikpihlstrom/anna-api">anna-api</a>
+				<br>
+				<a href="https://github.com/patrikpihlstrom/anna-dashboard">anna-dashboard</a>
 			</div>
-			<div class="col-sm">
+		</div>
+		<div class="col-sm">
+			<div class="container rounded">
 				<div class="row">
-					<div class="container rounded container-search">
-						<div class="row">
-							<div class="col-sm">
-								<input class="form-control" type="text"
-									   placeholder="driver" id="driver"/>
-							</div>
-							<div class="col-sm">
-								<input class="form-control" type="text"
-									   placeholder="site" id="site"/>
-							</div>
-							<div class="col-sm">
-								<button class="btn">{% octicon "plus" height="18" %}</button>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="container rounded container-search">
+					<div class="col-sm">
 						<input class="form-control" type="text"
-							   placeholder="status:starting,running driver:firefox site:test..."
-							   aria-label="search" id="search"/>
+							   placeholder="driver" id="driver"/>
 					</div>
+					<div class="col-sm">
+						<input class="form-control" type="text"
+							   placeholder="site" id="site"/>
+					</div>
+					<div class="col-sm">
+						<button class="btn">{% octicon "plus" height="18" %}</button>
+					</div>
+				</div>
+				<div class="row">
+					<input class="form-control" type="text"
+						   placeholder="status:starting,running driver:firefox site:test..."
+						   aria-label="search" id="search"/>
 				</div>
 			</div>
 		</div>
-		<div class="container rounded">
-			<div class="row row-job row-head">
-				<div class="col-sm-3 gray">{% octicon "tag" height="24" %}</div>
-				<div class="col-sm-3 gray">{% octicon "heart" height="24" %}</div>
-				<div class="col-sm-3 gray">{% octicon "note" height="24" %}</div>
-				<div class="col-sm-3 gray">{% octicon "history" height="24" %}</div>
-			</div>
+	</div>
+	<div class="container rounded container">
+		<div class="row row-job">
+			<div class="col-sm-3 gray">{% octicon "tag" height="24" %}</div>
+			<div class="col-sm-3 gray">{% octicon "heart" height="24" %}</div>
+			<div class="col-sm-3 gray">{% octicon "note" height="24" %}</div>
+			<div class="col-sm-3 gray">{% octicon "history" height="24" %}</div>
 		</div>
-		{% for job in jobs %}
-		<div class="container rounded">
-			<div class="row row-job row-head">
-				<div class="col-sm-3 gray">{{ job.tag }}</div>
-				<div class="col-sm-3 gray">{{ job.status }}</div>
-				<div class="col-sm-3 gray">{{ job.log }}</div>
-				<div class="col-sm-3 gray">{{ job.updated_at }}</div>
-			</div>
-		</div>
-		{% endfor %}
+	</div>
+	<div id="jobs">
 	</div>
 </div>
 {% endblock %}
