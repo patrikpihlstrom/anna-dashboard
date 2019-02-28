@@ -1,19 +1,18 @@
 $(document).ready(function () {
+	const separators = '., :';
+	const words = ['id:', 'driver:', 'site:', 'status:', 'tag:', 'container:', 'log:', 'token:', 'updated_at:', 'pending', 'starting', 'running', 'error', 'done', 'chrome', 'firefox'];
 	$('#search').keydown(function (e) {
-		if (e.keyCode == 9) {
+		if (e.keyCode == 9) { // tab was pressed
 			e.preventDefault();
 			$(this).get(0).setSelectionRange($(this).val().length, $(this).val().length);
-		} else if (e.keyCode == 13) {
-
+		} else if (e.keyCode === 13) { // return was pressed
 		}
 	});
 
 	$('#search').keyup(function (e) {
-		if ($(this).length === 0) {
+		if ($(this).length === 0 || e.keyCode === 8) { // backspace
 			return;
 		}
-		const separators = '., :';
-		const words = ['id:', 'driver:', 'site:', 'status:', 'tag:', 'container:', 'log:', 'token:', 'updated_at:', 'pending', 'starting', 'running', 'error', 'done'];
 
 		// get the characters between the cursor & 
 		// the beginning of the word
@@ -36,17 +35,19 @@ $(document).ready(function () {
 			}
 
 			var matches = [];
+			var suggestion = null;
 			words.forEach(function (w) {
 				if (w.startsWith(word)) {
-					matches.push(w);
+					suggestion = w;
+					return;
 				}
 			});
 
-			if (matches.length === 0) {
+			if (typeof suggestion == null) {
 				return false;
 			}
 
-			return matches[0];
+			return suggestion;
 		}; 
 
 		// we need to select the second part of the typed word
@@ -54,10 +55,9 @@ $(document).ready(function () {
 		if (cursor > 0) {
 			var word = getWord($(this).val(), cursor);
 			if (suggestion = findMatch(word)) {
-				console.log(suggestion);
-				suggestion = suggestion.replace(word, '');
+				suggestion = suggestion.slice(word.length, suggestion.length);
 				$(this).val($(this).val().substr(0, cursor));
-				$(this).val($(this).val() + suggestion.replace(word, ''));
+				$(this).val($(this).val() + suggestion);
 				$(this).get(0).setSelectionRange(cursor, $(this).val().length);
 			}
 		}
