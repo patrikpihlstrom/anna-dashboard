@@ -12,8 +12,6 @@ body {
 .container {
 	background-color: #fff;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.35), 0 6px 20px 0 rgba(0, 0, 0, 0.32);
-	margin-bottom: 16px;
-	padding: 16px;
 }
 
 .container-invisible {
@@ -29,12 +27,15 @@ body {
 	color: #777;
 }
 
-.row-job {
-	text-align: center;
-	padding-top: 3px;
+.row {
+	margin-top: 16px;
+	margin-bottom: 16px;
 }
 
-#search {
-	margin: 16px;
-	margin-bottom: 0px;
+.row-job {
+	text-align: center;
+	vertical-align: middle;
+	padding-top: 3px;
+	min-height: 56px;
 }
+

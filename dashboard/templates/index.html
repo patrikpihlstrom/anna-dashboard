@@ -11,8 +11,8 @@
 {% block body_content %}
 <div class="container container-invisible">
 	<div class="row">
-		<div class="col-sm-2">
-			<div class="container rounded">
+		<div class="container rounded">
+			<div class="col-sm-2">
 				<h1>anna</h1>
 				<a href="https://github.com/patrikpihlstrom/anna">anna</a>
 				<br>
@@ -20,9 +20,7 @@
 				<br>
 				<a href="https://github.com/patrikpihlstrom/anna-dashboard">anna-dashboard</a>
 			</div>
-		</div>
-		<div class="col-sm">
-			<div class="container rounded">
+			<div class="col-sm">
 				<div class="row">
 					<div class="col-sm">
 						<input class="form-control" type="text"
@@ -34,25 +32,30 @@
 					</div>
 					<div class="col-sm">
 						<button class="btn">{% octicon "plus" height="18" %}</button>
+						<button class="btn">{% octicon "gear" height="18" %}</button>
 					</div>
 				</div>
 				<div class="row">
-					<input class="form-control" type="text"
-						   placeholder="status:starting,running driver:firefox site:test..."
-						   aria-label="search" id="search"/>
+					<div class="col-sm">
+						<input class="form-control" type="text"
+							   placeholder="status:starting,running driver:firefox site:test..."
+							   aria-label="search" id="search"/>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<div class="container rounded container">
+	<div class="container rounded">
 		<div class="row row-job">
-			<div class="col-sm-3 gray">{% octicon "tag" height="24" %}</div>
-			<div class="col-sm-3 gray">{% octicon "heart" height="24" %}</div>
-			<div class="col-sm-3 gray">{% octicon "note" height="24" %}</div>
-			<div class="col-sm-3 gray">{% octicon "history" height="24" %}</div>
+			<div class="col-sm-3 gray my-auto">{% octicon "tag" height="24" %}</div>
+			<div class="col-sm-3 gray my-auto">{% octicon "globe" height="24" %}</div>
+			<div class="col-sm-3 gray my-auto">{% octicon "note" height="24" %}</div>
+			<div class="col-sm-3 gray my-auto">{% octicon "history" height="24" %}</div>
 		</div>
 	</div>
-	<div id="jobs">
+	<div class="col-sm">
+		<div id="jobs">
+		</div>
 	</div>
 </div>
 {% endblock %}

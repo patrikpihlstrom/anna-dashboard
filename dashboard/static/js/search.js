@@ -90,15 +90,16 @@ $(document).ready(function () {
 						var html =
 						'<div class="container rounded job">' +
 							'<div class="row row-job">' +
-								'<div class="col-sm-3 gray">' + job.tag + '</div>' +
-								'<div class="col-sm-3 gray">' + job.status + '</div>' +
-								'<div class="col-sm-3 gray">' + job.log + '</div>' +
-								'<div class="col-sm-3 gray">' + job.updated_at + '</div>' +
+								'<div class="col-sm-3 gray my-auto">' + job.tag + '</div>' +
+								'<div class="col-sm-3 gray my-auto">' + job.driver + '/' + job.site + '</div>' +
+								'<div class="col-sm-3 gray my-auto">' + job.status + '</div>' +
+								'<div class="col-sm-3 gray my-auto">' + job.updated_at + '</div>' +
 							'</div>' +
 						'</div>';
 						$('#jobs').append(html);
 					});
 				});
+				timer = 1;
 			}
 		}
 	}, 1000);

@@ -18,6 +18,9 @@ def search(request):
 	query = request.GET.urlencode()
 	jobs = []
 	for job in client.query(query):
-		if all(attribute in job for attribute in ('tag', 'status', 'log', 'updated_at')):
-			jobs.append({'tag': job['tag'], 'status': job['status'], 'log': job['log'][-int(job['log'].find(' ')):], 'updated_at': re.sub(r'.*, ', '', job['updated_at'].rstrip(' GMT'))})
+		if all(attribute in job for attribute in ('container', 'status', 'log', 'updated_at', 'driver', 'site')):
+			jobs.append({
+				'tag': job['container'], 'driver': job['driver'], 'site': job['site'], 'status': job['status'],
+				'log': job['log'][-int(job['log'].find(' ')):],
+				'updated_at': re.sub(r'.*, ', '', job['updated_at'].rstrip(' GMT'))})
 	return HttpResponse(json.dumps(jobs), content_type='application/json')
