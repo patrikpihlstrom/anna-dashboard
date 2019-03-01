@@ -15,7 +15,9 @@ def index(request):
 def search(request):
 	client = Client()  # TODO: singleton
 	client.authenticate(True)
-	query = dict(request.GET)['query[]']
+	query = {}
+	for key, val in dict(request.GET).items():
+		query[str(key).replace('[]', '')] = val
 	jobs = []
 	for job in client.query(query):
 		jobs.append({

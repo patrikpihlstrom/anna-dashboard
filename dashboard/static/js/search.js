@@ -1,6 +1,8 @@
 $(document).ready(function () {
 	const separators = '., ';
-	const words = ['pending', 'starting', 'running', 'error', 'done', 'chrome', 'firefox'];
+	const status = ['pending', 'starting', 'running', 'error', 'failed', 'done'];
+	const driver = ['firefox', 'chrome'];
+	const words = status.concat(driver);
 
 	var timer = 1;
 
@@ -20,7 +22,7 @@ $(document).ready(function () {
 			return;
 		}
 
-		timer = 2;
+		timer = 1;
 
 		// get the characters between the cursor & 
 		// the beginning of the word
@@ -75,10 +77,24 @@ $(document).ready(function () {
 		if (timer > 0) {
 			timer--;
 			if (timer <= 0) {
-				var query = $('#search').val().trim().split(' ');
+				var query = {'status': [], 'driver': [], 'extra': []};
+				$('#search').val().trim().split(' ').forEach(function (q) {
+					if (q.length > 0) {
+						if (query['status'].indexOf(q) <= -1 && status.indexOf(q) > -1) {
+							query['status'].push(q);
+						}
+						else if (query['driver'].indexOf(q) <= -1 && driver.indexOf(q) > -1) {
+							query['driver'].push(q);
+						}
+						else if (query['extra'].indexOf(q) <= -1) {
+							query['extra'].push(q);
+						}
+					}
+				});
+				console.log(query);
 				$.ajax({
 					url: '/search',
-					data: {query: query}
+					data: query
 				}).done(function (response) {
 					$('#jobs').empty();
 					response.forEach(function (job) {
@@ -94,7 +110,7 @@ $(document).ready(function () {
 						$('#jobs').append(html);
 					});
 				});
-				//timer = 3;
+				timer = 3;
 			}
 		}
 	}, 1000);
