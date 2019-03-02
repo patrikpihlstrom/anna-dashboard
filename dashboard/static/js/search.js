@@ -5,6 +5,7 @@ $(document).ready(function () {
 	const words = status.concat(driver);
 
 	var timer = 1;
+	var hash = '';
 
 	$('#search').keydown(function (e) {
 		if (e.keyCode == 9) { // tab was pressed
@@ -77,7 +78,7 @@ $(document).ready(function () {
 		if (timer > 0) {
 			timer--;
 			if (timer <= 0) {
-				var query = {'status': [], 'driver': [], 'extra': []};
+				var query = {'status': [], 'driver': [], 'extra': [], 'hash': hash};
 				$('#search').val().trim().split(' ').forEach(function (q) {
 					if (q.length > 0) {
 						if (query['status'].indexOf(q) <= -1 && status.indexOf(q) > -1) {
@@ -91,24 +92,27 @@ $(document).ready(function () {
 						}
 					}
 				});
-				console.log(query);
+				console.log(hash);
 				$.ajax({
 					url: '/search',
 					data: query
 				}).done(function (response) {
-					$('#jobs').empty();
-					response.forEach(function (job) {
-						var html =
-						'<div class="container rounded job">' +
-							'<div class="row row-job">' +
-								'<div class="col-sm-3 gray my-auto">' + job.tag + '</div>' +
-								'<div class="col-sm-3 gray my-auto">' + job.driver + '/' + job.site + '</div>' +
-								'<div class="col-sm-3 gray my-auto">' + job.status + '</div>' +
-								'<div class="col-sm-3 gray my-auto">' + job.updated_at + '</div>' +
-							'</div>' +
-						'</div>';
-						$('#jobs').append(html);
-					});
+					if (typeof response === 'object') {
+						hash = response['hash']
+						$('#jobs').empty();
+						response['jobs'].forEach(function (job) {
+							var html =
+							'<div class="container rounded job">' +
+								'<div class="row row-job">' +
+									'<div class="col-sm-3 gray my-auto">' + job.tag + '</div>' +
+									'<div class="col-sm-3 gray my-auto">' + job.driver + '/' + job.site + '</div>' +
+									'<div class="col-sm-3 gray my-auto">' + job.status + '</div>' +
+									'<div class="col-sm-3 gray my-auto">' + job.updated_at + '</div>' +
+								'</div>' +
+							'</div>';
+							$('#jobs').append(html);
+						});
+					}
 				});
 				timer = 3;
 			}
