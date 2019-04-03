@@ -87,9 +87,6 @@ $(document).ready(function () {
 						else if (query['driver'].indexOf(q) <= -1 && driver.indexOf(q) > -1) {
 							query['driver'].push(q);
 						}
-						else if (query['extra'].indexOf(q) <= -1) {
-							query['extra'].push(q);
-						}
 					}
 				});
 				console.log(hash);
