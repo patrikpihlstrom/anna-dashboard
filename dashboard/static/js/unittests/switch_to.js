@@ -18,6 +18,6 @@ $(document).ready(function ($) {
         e.preventDefault();
         window.setTimeout(function () {
             $('body').append('<div id="iframe-test-wait-get">Test Wait Get</div>');
-        }, 3000);
+        }, 1000);
     });
 });
