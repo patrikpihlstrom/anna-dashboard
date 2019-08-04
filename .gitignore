@@ -4,3 +4,6 @@ venv
 .idea
 dashboard/static/media/*
 .vscode
+anna_dashboard.egg-info/
+build/
+dist/
